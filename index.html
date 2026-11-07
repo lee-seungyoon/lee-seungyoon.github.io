@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seungyoon Lee — UX research and strategy</title>
+<meta name="description" content="UX research and strategy, between people, business, systems and new technology. Selected work by Seungyoon Lee.">
+<meta property="og:title" content="Seungyoon Lee — UX research and strategy">
+<meta property="og:description" content="UX research and strategy, between people, business, systems and new technology.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B3FE8'/%3E%3Ccircle cx='16' cy='16' r='5' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: fixed left rail of sections on desktop, scrolling top bar on phones; one prose column of ~68ch. */
+:root{
+  --paper:#FFFFFF; --surface:#F4F4F6; --ink:#0D0D11; --muted:#44444D;
+  --accent:#1B3FE8; --accent-soft:#E3E9FF; --rule:#D5D5DC; --faint:#6E6E79;
+  --s1:#BFCCFB; --s2:#5473EE; --s3:#1B3FE8;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0C0C10; --surface:#17171D; --ink:#F7F7FA; --muted:#B2B2BE;
+  --accent:#8AA4FF; --accent-soft:#1A2048; --rule:#2B2B34; --faint:#83838F;
+  --s1:#2B3361; --s2:#5571E2; --s3:#8AA4FF; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0C0C10; --surface:#17171D; --ink:#F7F7FA; --muted:#B2B2BE;
+  --accent:#8AA4FF; --accent-soft:#1A2048; --rule:#2B2B34; --faint:#83838F;
+  --s1:#2B3361; --s2:#5571E2; --s3:#8AA4FF; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);gap:0;min-height:100%}
+.rail{border-right:1px solid var(--rule);padding-block:40px 32px;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:20px;position:sticky;top:env(safe-area-inset-top,0px);align-self:start;max-height:100vh;overflow-y:auto}
+.brand{display:block;font-family:var(--display);font-size:25px;font-weight:700;line-height:1.2;letter-spacing:-.008em;text-decoration:none;margin-bottom:4px}
+.brand-sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:30px}
+.nav{display:flex;flex-direction:column;gap:1px}
+.nav a{font-size:14.5px;text-decoration:none;color:var(--muted);padding:6px 0;border:0;background:none;text-align:left;font-family:var(--body);cursor:pointer}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--ink);font-weight:600}
+.nav .grp{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin:22px 0 7px}
+.nav a.sub{padding-left:0}
+.nav a.nic{display:flex;align-items:center;gap:9px}
+.nav a.nic svg{width:13px;height:13px;flex:none;color:var(--faint);display:block;transition:color .15s}
+.nav a.nic:hover svg,.nav a.nic.on svg{color:var(--accent)}
+
+main{padding-block:56px 96px;padding-left:max(44px,env(safe-area-inset-left,0px));padding-right:max(44px,env(safe-area-inset-right,0px));min-width:0}
+.col{max-width:680px}
+.abouthead{display:flex;gap:28px;align-items:flex-end}
+.portrait{margin:0;flex:0 0 172px;line-height:0}
+.portrait img{width:100%;height:auto;display:block}
+.portrait .p-dark{display:none}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .portrait .p-light{display:none}:root:not([data-theme="light"]) .portrait .p-dark{display:block}}
+:root[data-theme="dark"] .portrait .p-light{display:none}
+:root[data-theme="dark"] .portrait .p-dark{display:block}
+@media(max-width:620px){.abouthead{gap:20px}.portrait{flex-basis:124px}}
+.wide{max-width:960px}
+
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1.big{font-family:var(--display);font-size:clamp(33px,5vw,49px);font-weight:700;line-height:1.1;letter-spacing:-.018em;margin-top:14px}
+h2.sec{font-family:var(--display);font-size:clamp(23px,3.2vw,29px);font-weight:700;line-height:1.22;letter-spacing:-.008em}
+h3.sub{font-size:17px;font-weight:600;line-height:1.3}
+.lede{font-size:19px;line-height:1.55;color:var(--muted);margin-top:20px}
+#c-beats{margin-top:22px}
+.prose p{margin-top:17px;color:var(--muted)}
+.prose p.ink{color:var(--ink)}
+.prose b{color:var(--ink);font-weight:600}
+.prose p:first-child{margin-top:0}
+.stack{display:flex;flex-direction:column}
+.g14{gap:14px}.g20{gap:20px}.g28{gap:28px}.g44{gap:44px}.g64{gap:92px}
+
+.rule{height:1px;background:var(--rule);border:0}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.fig{background:var(--paper);padding:20px 18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.fig i{font-family:var(--mono);font-size:10px;font-style:normal;letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
+.fig b{font-family:var(--mono);font-size:27px;font-weight:500;color:var(--accent);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.fig span{font-size:13.5px;line-height:1.4;color:var(--muted)}
+
+.pillars{display:grid;gap:1px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.pill{background:var(--paper);padding:19px 0;display:grid;grid-template-columns:116px minmax(0,1fr);gap:18px;align-items:baseline;text-decoration:none;cursor:pointer;text-align:left;border:0;font-family:inherit;font-size:inherit;width:100%}
+.pill:hover .pill-n{color:var(--accent)}
+.pill-n{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.004em;color:var(--ink)}
+.pill-t{font-size:14.5px;line-height:1.5;color:var(--muted)}
+
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:34px 64px;align-items:start;padding-block:36px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.qd{background:none;border:0;font-family:inherit;cursor:pointer;padding:0;display:flex;flex-direction:column;gap:8px;min-width:0;text-align:left}
+.qd-n{font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:-.008em;color:var(--ink);display:flex;align-items:center;gap:11px}
+.qd-ic{width:22px;height:22px;flex:none;color:var(--accent);display:block}
+.eye-ic{display:flex;align-items:center;gap:8px}
+.eye-ic svg{width:16px;height:16px;flex:none;color:var(--accent);display:block}
+.qd:hover .qd-n{color:var(--accent)}
+
+.qd-t{font-size:14px;line-height:1.55;color:var(--muted);max-width:33ch}
+.quad-hub{grid-column:1/-1;display:flex;justify-content:center;padding-block:4px}
+.quad-hub svg{width:116px;height:116px;display:block}
+@media (max-width:620px){
+  .quad{grid-template-columns:minmax(0,1fr);gap:0;padding-block:0;border-bottom:0}
+  .qd{padding-block:20px;border-top:1px solid var(--rule)}
+  .qd-t{max-width:none}
+  .quad-hub{display:none}
+}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:14px;box-shadow:0 0 20px -10px rgba(16,16,24,.15),0 8px 22px -16px rgba(16,16,24,.2);padding:24px 24px 19px;display:flex;flex-direction:column;gap:9px;text-align:left;cursor:pointer;font-family:inherit;min-width:0;transition:border-color .15s,box-shadow .15s}
+.card:hover{border-color:var(--accent);box-shadow:0 0 24px -10px rgba(16,16,24,.22),0 10px 26px -16px rgba(16,16,24,.26)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .card{background:var(--surface);box-shadow:none}}
+:root[data-theme="dark"] .card{background:var(--surface);box-shadow:none}
+.card .tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.card h3{font-family:var(--display);font-size:20px;font-weight:600;line-height:1.28;letter-spacing:-.004em;text-wrap:balance;min-height:2.56em}
+.card p{font-size:14px;line-height:1.5;color:var(--muted);min-height:4.5em;margin-bottom:8px}
+.card .meta{align-self:flex-start;margin-top:auto;font-size:11.5px;line-height:1.3;color:var(--faint);border:1px solid var(--rule);border-radius:4px;padding:4px 9px;background:rgba(110,110,125,.09);white-space:nowrap}
+
+.beat{display:grid;grid-template-columns:52px minmax(0,1fr);gap:22px;align-items:start}
+.beat-n{font-family:var(--mono);font-size:12px;color:var(--faint);padding-top:6px;letter-spacing:.04em}
+.beat h3{font-family:var(--display);font-size:23px;font-weight:700;line-height:1.26;letter-spacing:-.006em}
+.judgment{background:var(--surface);border-left:3px solid var(--accent);padding:26px 26px 28px;margin-left:-26px}
+.judgment .beat-n{color:var(--accent)}
+
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 14px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.45}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);font-weight:400;white-space:nowrap}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroller table{min-width:620px}
+.archive td{font-size:13.5px;color:var(--muted)}
+.archive td:nth-child(3){color:var(--ink)}
+
+blockquote{margin:0;font-family:var(--display);font-size:19px;font-weight:500;line-height:1.55;letter-spacing:0;color:var(--ink)}
+.pull{border-left:3px solid var(--accent);padding-left:22px}
+
+.kv{display:grid;grid-template-columns:150px minmax(0,1fr);gap:26px 20px;font-size:14.5px}
+.kv dt{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);padding-top:4px}
+.kv dd{margin:0;color:var(--muted)}
+.kv dd b{color:var(--ink);font-weight:500}
+
+.call{margin-top:26px;border-left:3px solid var(--accent);padding:2px 0 2px 20px;display:flex;flex-direction:column;gap:7px}
+.scope{display:flex;flex-wrap:wrap;gap:18px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:20px}
+.scope[hidden]{display:none}
+.scope div{flex:1 1 132px;min-width:132px;padding-right:18px}
+.scope b{display:block;font-family:var(--display);font-size:27px;font-weight:700;line-height:1.1;letter-spacing:-.012em;color:var(--ink)}
+.scope span{display:block;margin-top:6px;font-size:13.5px;line-height:1.35;color:var(--faint)}
+.tagline{margin-top:12px;font-size:19px;line-height:1.4;color:var(--muted)}
+.idlinks{display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+.idlinks a{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--paper);text-decoration:none;border-radius:999px;transition:background .15s}
+.idlinks a:hover{background:var(--accent)}
+.btn-pri{gap:7px;height:40px;padding:0 20px;font-size:14px;font-weight:600;letter-spacing:-.005em}
+.btn-ic{width:40px;height:40px}
+.worklist{display:flex;flex-direction:column;gap:13px}
+.worklist b{display:block;font-weight:600;color:var(--ink)}
+.worklist span{display:block;margin-top:2px;font-size:14px;color:var(--faint)}
+.kv dd a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
+.kv dd a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.saying{display:grid;grid-template-columns:minmax(0,1fr) 288px;gap:32px;align-items:center;border-bottom:1px solid var(--rule)}
+.saying-q{margin-top:17px}
+.saying-k{margin-top:6px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.saying blockquote{margin:0;font-family:var(--display);font-size:clamp(21px,2.7vw,27px);font-weight:600;line-height:1.26;letter-spacing:-.01em;color:var(--ink)}
+.saying blockquote+blockquote{margin:20px 0 0}
+.saying p.sub{margin-top:17px;font-size:15.5px;line-height:1.55;color:var(--muted)}
+@media(max-width:700px){.saying{grid-template-columns:1fr;gap:26px}.saying .portrait{width:176px}}
+.call-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.call span:last-child{font-size:17px;line-height:1.5;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding-top:2px}
+.chips span{font-size:13px;line-height:1.3;color:var(--muted);border:1px solid var(--rule);border-radius:5px;padding:5px 11px;background:var(--surface);white-space:nowrap}
+.entry{display:flex;flex-direction:column;gap:6px;padding-bottom:20px;border-bottom:1px solid var(--rule)}
+.entry .top{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.entry h3{font-family:var(--display);font-size:18px;font-weight:600;line-height:1.3;letter-spacing:0}
+.entry .lang{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border:1px solid var(--rule);padding:1px 6px}
+.entry p{font-size:14px;color:var(--muted);line-height:1.5}
+.entry a{color:var(--accent);text-decoration:none;font-size:13.5px;font-family:var(--mono)}
+.entry a:hover{text-decoration:underline}
+
+.qrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;padding:18px 0;border:0;border-top:1px solid var(--rule);background:none;text-align:left;cursor:pointer;width:100%;font-family:inherit}
+.qrow:last-of-type{border-bottom:1px solid var(--rule)}
+.qrow .m{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.qrow:hover .m{transform:scale(1.3)}
+.qrow .q{font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink);line-height:1.35;letter-spacing:0}
+.qrow:hover .q{color:var(--accent)}
+.qrow .a{font-family:var(--mono);font-size:15px;color:var(--accent);opacity:.35}
+.qrow:hover .a{opacity:1;transform:translateX(3px)}
+@media (prefers-reduced-motion:no-preference){.qrow .a,.qrow .m{transition:transform .15s ease,opacity .15s ease,background .15s ease}}
+@media (max-width:620px){.qrow{padding:16px 0;gap:12px}.g64{gap:64px}}
+.qa{display:flex;flex-direction:column;gap:11px;padding-bottom:26px;border-bottom:1px solid var(--rule)}
+.qa h3{font-family:var(--display);font-size:22px;font-weight:700;line-height:1.3;letter-spacing:-.008em;color:var(--accent);text-wrap:balance}
+.qa p{font-size:15px;line-height:1.6;color:var(--muted)}
+.qa-foot{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.wlinks{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;padding:9px 14px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .18s;z-index:50}
+.toast.on{opacity:1}
+.qa-tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.qa-link{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-align:left;align-self:flex-start}
+.qa-link:hover{text-decoration:underline}
+.back{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:none;border:0;padding:0;cursor:pointer}
+.back:hover{color:var(--accent)}
+
+.figure{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+.figure svg{width:100%;max-width:520px;height:auto;display:block;font-family:var(--body)}
+.figure figcaption{font-family:var(--mono);font-size:11px;line-height:1.5;color:var(--faint);max-width:520px}
+.svg-lab{font-size:12.5px;fill:var(--muted)}
+.svg-ink{font-size:13px;fill:var(--ink);font-weight:500}
+.svg-num{font-family:var(--mono);font-size:12px;fill:var(--ink);font-variant-numeric:tabular-nums}
+.svg-big{font-family:var(--mono);font-size:26px;font-weight:500;fill:var(--accent);font-variant-numeric:tabular-nums}
+.svg-tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--faint)}
+.svg-tag-a{font-family:var(--mono);font-size:10px;letter-spacing:.08em;fill:var(--accent)}
+.note{font-size:13px;line-height:1.5;color:var(--faint);font-style:italic}
+.ways{display:flex;flex-direction:column;gap:24px;border-top:1px solid var(--rule);padding-top:28px}
+.ways>div{display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px}
+.ways i{font-family:var(--mono);font-size:11px;font-style:normal;color:var(--faint);padding-top:5px}
+.ways b{display:block;font-size:16.5px;font-weight:600;letter-spacing:-.006em;color:var(--ink)}
+.ways p{margin-top:7px;font-size:15px;line-height:1.55;color:var(--muted)}
+@media(max-width:620px){.ways>div{grid-template-columns:minmax(0,1fr);gap:4px}.ways i{display:none}}
+.site-foot{margin-top:96px}
+.colophon{flex-basis:100%;display:flex;flex-wrap:wrap;gap:4px 20px;margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--faint)}
+footer{border-top:1px solid var(--rule);padding-top:26px;font-size:13.5px;color:var(--muted);display:flex;gap:10px 26px;flex-wrap:wrap}
+footer a{color:var(--accent);text-decoration:none}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){.view{animation:f .25s ease}@keyframes f{from{opacity:0;transform:translateY(5px)}}}
+
+@media (max-width:820px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{border-right:0;border-bottom:1px solid var(--rule);position:sticky;z-index:9;background:var(--paper);padding-block:16px 12px;padding-right:max(16px,env(safe-area-inset-right,0px));padding-left:max(16px,env(safe-area-inset-left,0px));max-height:none}
+  .brand-sub{margin-bottom:14px}
+  .nav{flex-direction:row;gap:16px;overflow-x:auto;white-space:nowrap;padding-bottom:3px}
+  .nav .grp{display:none}
+  main{padding-block:34px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .beat{grid-template-columns:minmax(0,1fr);gap:10px}
+  .beat-n{padding-top:0}
+  .judgment{margin-left:0;padding:22px}
+  .pill{grid-template-columns:minmax(0,1fr);gap:4px}
+  .kv{grid-template-columns:minmax(0,1fr);gap:3px 0}
+  .kv dd{margin-bottom:22px}
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <a class="brand" href="#home" data-go="home">Yoon Lee</a>
+    <div class="brand-sub">UX Researcher, Strategy</div>
+    <nav class="nav" id="nav">
+      <a data-go="about">About</a>
+      <div class="grp">What I work between</div>
+      <a data-go="people" class="sub nic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.6" fill="currentColor"/></svg>People</a>
+      <a data-go="business" class="sub nic"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="1.9"/><circle cx="6" cy="12" r="2.6" fill="currentColor"/><circle cx="18" cy="12" r="2.6" fill="currentColor"/></svg>Business</a>
+      <a data-go="system" class="sub nic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="6" cy="6" r="2.6" fill="currentColor"/><circle cx="18" cy="6" r="2.6" fill="currentColor"/><circle cx="6" cy="18" r="2.6" fill="currentColor"/><circle cx="18" cy="18" r="2.6" fill="currentColor"/></svg>System</a>
+      <a data-go="technology" class="sub nic"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="18" y2="5" stroke="currentColor" stroke-width="1.9"/><line x1="5" y1="12" x2="18" y2="19" stroke="currentColor" stroke-width="1.9"/><circle cx="5" cy="12" r="2.6" fill="currentColor"/><circle cx="18" cy="5" r="2.6" fill="currentColor"/><circle cx="18" cy="19" r="2.6" fill="currentColor"/></svg>Technology</a>
+      <div class="grp">More</div>
+      <a data-go="projects" class="sub">Projects</a>
+      <a data-go="questions" class="sub">Questions</a>
+      <a data-go="writing" class="sub">Writing &amp; talks</a>
+    </nav>
+  </aside>
+
+  <main id="main">
+
+  <!-- ============ HOME ============ -->
+  <section class="view col stack g64" id="v-home">
+    <div>
+      <div class="eyebrow">UX Researcher, Strategy &middot; Vancouver, BC</div>
+      <h1 class="big">Most of my work starts with a question we don&rsquo;t yet know how to answer.</h1>
+      <p class="lede">Changing who we look at, and how. Weighing who uses it against who provides it. Setting up how it stays in use.</p>
+    </div>
+
+    <div class="figs">
+      <div class="fig"><i>Led</i><b>40+</b><span>research and strategy projects</span></div>
+      <div class="fig"><i>Ran research in</i><b>11</b><span>countries</span></div>
+      <div class="fig"><i>Hired and mentored</i><b>12</b><span>researchers and strategists</span></div>
+    </div>
+
+    <div class="stack g20">
+      <h2 class="sec">What I work between</h2>
+      <div class="quad">
+        <button class="qd tl" data-go="people"><span class="qd-n"><svg class="qd-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.6" fill="currentColor"/></svg>People</span><span class="qd-t">Getting answers when there is nobody to ask</span></button>
+        <button class="qd tr" data-go="business"><span class="qd-n"><svg class="qd-ic" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="12" r="2.6" fill="currentColor"/><circle cx="18" cy="12" r="2.6" fill="currentColor"/></svg>Business</span><span class="qd-t">Turning evidence into a basis a team can choose on</span></button>
+        <div class="quad-hub" aria-hidden="true"><svg viewBox="0 0 116 116">
+          <line x1="51" y1="51" x2="22" y2="22" stroke="var(--rule)" stroke-width="1.5"/>
+          <line x1="65" y1="51" x2="94" y2="22" stroke="var(--rule)" stroke-width="1.5"/>
+          <line x1="51" y1="65" x2="22" y2="94" stroke="var(--rule)" stroke-width="1.5"/>
+          <line x1="65" y1="65" x2="94" y2="94" stroke="var(--rule)" stroke-width="1.5"/>
+          <circle cx="22" cy="22" r="3.5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <circle cx="94" cy="22" r="3.5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <circle cx="22" cy="94" r="3.5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <circle cx="94" cy="94" r="3.5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <circle cx="58" cy="58" r="8" fill="var(--accent)"/>
+        </svg></div>
+        <button class="qd bl" data-go="system"><span class="qd-n"><svg class="qd-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="2.6" fill="currentColor"/><circle cx="18" cy="6" r="2.6" fill="currentColor"/><circle cx="6" cy="18" r="2.6" fill="currentColor"/><circle cx="18" cy="18" r="2.6" fill="currentColor"/></svg>System</span><span class="qd-t">Leaving research a team can still use</span></button>
+        <button class="qd br" data-go="technology"><span class="qd-n"><svg class="qd-ic" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="18" y2="5" stroke="currentColor" stroke-width="1.6"/><line x1="5" y1="12" x2="18" y2="19" stroke="currentColor" stroke-width="1.6"/><circle cx="5" cy="12" r="2.6" fill="currentColor"/><circle cx="18" cy="5" r="2.6" fill="currentColor"/><circle cx="18" cy="19" r="2.6" fill="currentColor"/></svg>Technology</span><span class="qd-t">Getting people past the first use</span></button>
+      </div>
+    </div>
+
+    <div class="stack g20">
+      <h2 class="sec">Where I start</h2>
+      <div id="home-q"></div>
+      <button class="qa-link" data-go="questions">More questions &rarr;</button>
+    </div>
+
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view col stack g44" id="v-about" hidden>
+    <div><div class="eyebrow">About</div><h1 class="big">Seungyoon Lee</h1>
+      <p class="tagline">UX research and strategy, between people, business, systems and new technology.</p></div>
+    <div class="idlinks">
+      <a class="btn-pri" href="#" target="_blank" rel="noopener">Resume <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+      <a class="btn-ic" href="mailto:syleeee@gmail.com" aria-label="Email" title="syleeee@gmail.com"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.75" width="19" height="14.5" rx="2.5"/><path d="m3.4 7.3 8.6 5.4 8.6-5.4"/></svg></a>
+      <a class="btn-ic" href="https://www.linkedin.com/in/seung-yoon-lee" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg></a>
+      <a class="btn-ic" href="https://syleeee.medium.com" target="_blank" rel="noopener" aria-label="Medium"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor"><path d="M13.54 12a6.77 6.77 0 1 1-13.54 0 6.77 6.77 0 0 1 13.54 0zM20.96 12c0 3.54-1.51 6.42-3.38 6.42s-3.39-2.88-3.39-6.42 1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg></a>
+    </div>
+    <div class="prose stack">
+      <p>I&rsquo;m Yoon. I lead UX research and strategy at pxd in Seoul, and the team of researchers and strategists that does it.</p>
+      <p>Much of my work begins while the problem is still unclear. The evidence does not match the brief, stakeholders want different things, or we&rsquo;re designing something people haven&rsquo;t experienced before. Working that out means moving between the four in the navigation: people, business, system, technology.</p>
+      <p>I&rsquo;m based in Vancouver and work remotely with my team in Seoul. The list of things I want to find out hasn&rsquo;t got any shorter, which is most of why I keep doing this.</p>
+    </div>
+    <div class="saying">
+      <div>
+        <p class="saying-k">What I ask most often</p>
+        <div class="saying-q">
+          <blockquote>So, what&rsquo;s the evidence?</blockquote>
+          <blockquote>And what&rsquo;s underneath that?</blockquote>
+        </div>
+      </div>
+      <figure class="portrait"><img class="p-light" src="portrait.png" width="640" height="682" alt="Drawn portrait of Seungyoon Lee"><img class="p-dark" src="portrait-dark.png" width="640" height="682" alt="" aria-hidden="true"></figure>
+    </div>
+
+    <hr class="rule">
+
+    <dl class="kv">
+      <dt>Experience</dt><dd><div class="worklist"><div><b>UX Research &amp; Strategy Lead</b><span><a href="https://pxd.co.kr/en" target="_blank" rel="noopener">pxd</a>, Seoul</span></div><div><b>Research Professor</b><span><a href="https://art.snu.ac.kr/en/category/design-en" target="_blank" rel="noopener">Seoul National University, Department of Design</a></span></div><div><b>Senior Researcher</b><span>Korean Design Research Institute</span></div><div><b>Creative Consultant</b><span><a href="https://www.ibm.com/kr-ko" target="_blank" rel="noopener">IBM Korea</a></span></div></div></dd>
+      <dt>Worked with</dt><dd>Google, Meta, Spotify, YouTube, Samsung, LG, Hyundai Motor Group, DENSO, Coway, LG AI Research, WEMADE, Ledger, Boston Consulting Group, and more</dd>
+      <dt>Domains</dt><dd><div class="chips"><span>AI</span><span>Mobility</span><span>Consumer technology</span><span>Enterprise systems</span><span>Finance</span><span>Entertainment</span><span>Healthcare</span><span>Blockchain</span></div></dd>
+      <dt>Research methods</dt><dd><div class="chips"><span>Foundational research</span><span>Evaluative research</span><span>Mixed methods</span><span>Survey design</span><span>Usability testing</span><span>Diary studies</span><span>Contextual inquiry</span><span>Personas</span><span>Journey mapping</span></div></dd>
+      <dt>Strategy &amp; facilitation</dt><dd><div class="chips"><span>Problem framing</span><span>Opportunity discovery</span><span>Co-creation workshops</span><span>Service blueprinting</span><span>Product strategy</span><span>Stakeholder alignment</span><span>Team mentoring</span></div></dd>
+      <dt>Research in</dt><dd>Korea, United States, United Kingdom, China, Japan, Germany, Philippines, Indonesia, Portugal, Brazil, India</dd>
+      <dt>Teaching</dt><dd><div class="worklist"><div><b>Lecturer</b><span><a href="https://art.snu.ac.kr/en/category/design-en" target="_blank" rel="noopener">Seoul National University, Department of Design</a></span></div></div></dd>
+      <dt>In Vancouver</dt><dd><a href="https://citystudiovancouver.com" target="_blank" rel="noopener">CityStudio Vancouver</a>, SEO/GEO and website experience analysis<br><a href="https://newtobc.ca/library-champions-project" target="_blank" rel="noopener">NewToBC Library Champions</a>, Richmond Public Library</dd>
+    </dl>
+
+  </section>
+
+  <!-- ============ PILLARS ============ -->
+  <section class="view col stack g44" id="v-people" hidden>
+    <div><div class="eyebrow eye-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.6" fill="currentColor"/></svg>People</div><h1 class="big">Understanding what I have not lived</h1></div>
+    <div class="prose stack">
+      <p><b>I have never run a semiconductor line or operated an MRI scanner.</b> When I have to understand a situation I have never been in, it starts with meeting people I do not know. Sitting with them, watching the work, asking what it is actually like. So the first question is not what to ask, but who can answer.</p>
+    </div>
+    <div class="ways">
+      <div><i>01</i><div><b>Learn from current users</b><p>Meet people who already use the product, or something close to it. Watch them as well as ask. What they say is real evidence, and it is rarely all of it. The need worth building for usually sits behind the wording, in a pause, a face, the thing nobody bothers to mention.</p></div></div>
+      <div><i>02</i><div><b>Make the users</b><p>Sometimes the people a product is aimed at are not interested, or turn it down outright. That is a finding, not a conclusion. Give them the product long enough to live with it. The real problems and the real openings show up in what they do.</p></div></div>
+      <div><i>03</i><div><b>Read the outliers</b><p>A product aimed years out has no users yet. So I go to the edge cases in a nearby industry: someone unreasonably careful about the security of their money, someone with strong opinions about the cup holders in their car.</p></div></div>
+    </div>
+    <div class="cards" data-pillar="People"></div>
+  </section>
+
+  <section class="view col stack g44" id="v-business" hidden>
+    <div><div class="eyebrow eye-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="12" r="2.6" fill="currentColor"/><circle cx="18" cy="12" r="2.6" fill="currentColor"/></svg>Business</div><h1 class="big">Evidence is not a decision</h1></div>
+    <div class="prose stack">
+      <p><b>Research can change how a team sees a problem. Deciding what to do about it is a different job.</b> I turn findings into priorities, product direction, and trade-offs people have actually agreed to. The hard part is when the best thing for the user costs the business.</p>
+    </div>
+    <div class="ways">
+      <div><i>01</i><div><b>Co-create the opportunities</b><p>I develop opportunities with the people who would have to build and deliver them. Bringing them in early means the constraints show up while the ideas are still cheap to change. Weak options die in the room, not in a review three months later.</p></div></div>
+      <div><i>02</i><div><b>Map the exchange</b><p>I map what each party contributes and what it receives: data, revenue, physical assets, access to customers. That shows what an idea depends on. Some ideas look strong until the map puts the company in a role it cannot fill.</p></div></div>
+      <div><i>03</i><div><b>Agree the basis for choosing</b><p>The criteria depend on the decision. They might be customer need, business fit and feasibility, or something else. I get the team to agree on them before anyone scores anything. Otherwise product, engineering and strategy each argue from the criterion they already favour.</p></div></div>
+    </div>
+    <div class="cards" data-pillar="Business"></div>
+  </section>
+
+  <section class="view col stack g44" id="v-system" hidden>
+    <div><div class="eyebrow eye-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="6" r="2.6" fill="currentColor"/><circle cx="18" cy="6" r="2.6" fill="currentColor"/><circle cx="6" cy="18" r="2.6" fill="currentColor"/><circle cx="18" cy="18" r="2.6" fill="currentColor"/></svg>System</div><h1 class="big">Knowledge flows in small pieces</h1></div>
+    <div class="prose stack">
+      <p><b>The research gets done. The results get written up. Then, months later, someone asks: where was that thing? What did it say?</b> That is where most research dies. So I build what we learn the way a design system is built: small parts that can move on their own.</p>
+    </div>
+    <div class="ways">
+      <div><i>01</i><div><b>Break it into atoms</b><p>A study produces one deliverable and a lot of small facts. The facts are often what another team needs. So I break the subject into parts: who is using the product, what situation they are using it in, what they are trying to get done, what the technology could offer, and so on. Say the study was about a family of four in a large SUV. The team working on a small sedan can still use parts of it.</p></div></div>
+      <div><i>02</i><div><b>Make each atom findable</b><p>What a team looks for is not only the result of a study. It is the problem that made someone ask in the first place, the material the study was built from, and what changed after it. Each of those is an atom too. They have to sit inside the way the team already works, not in a folder someone has to remember.</p></div></div>
+    </div>
+    <div class="cards" data-pillar="System"></div>
+  </section>
+
+  <section class="view col stack g44" id="v-technology" hidden>
+    <div><div class="eyebrow eye-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="18" y2="5" stroke="currentColor" stroke-width="1.6"/><line x1="5" y1="12" x2="18" y2="19" stroke="currentColor" stroke-width="1.6"/><circle cx="5" cy="12" r="2.6" fill="currentColor"/><circle cx="18" cy="5" r="2.6" fill="currentColor"/><circle cx="18" cy="19" r="2.6" fill="currentColor"/></svg>Technology</div><h1 class="big">Make new technology worth learning</h1></div>
+    <div class="prose stack">
+      <p><b>My work puts me in front of new technology before most people see it.</b> Right now that is almost always AI. The usual job is to make it easy to use, and that matters. Someone who finds a technology easy will try it. Someone who finds it meaningful will teach themselves the rest.</p>
+    </div>
+    <div class="ways">
+      <div><i>01</i><div><b>Make it easy to understand</b><p>The ordinary job, and it still has to be done. People have to be able to tell what the thing does, what it is doing right now, and what to do when it gets something wrong. With AI that last one matters more than it used to.</p></div></div>
+      <div><i>02</i><div><b>Then give them a reason</b><p>Easy gets someone through the first use. It does not bring them back. What brings them back is finding something in it worth the effort, and after that they teach themselves the rest. So the question is not whether they can use it.</p></div></div>
+    </div>
+    <div class="cards" data-pillar="Technology"></div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="view wide stack g44" id="v-projects" hidden>
+    <div class="col"><div class="eyebrow">Projects</div><h1 class="big">Selected work</h1></div>
+    <div class="cards" id="all-cards"></div>
+    <hr class="rule">
+    <div class="stack g20">
+      <h2 class="sec">Archive</h2>
+      <div class="scroller"><table class="archive"><thead><tr><th>Year</th><th>Domain</th><th>Project</th><th>Scope</th></tr></thead><tbody id="archive"></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- ============ QUESTIONS ============ -->
+  <section class="view col stack g44" id="v-questions" hidden>
+    <div><div class="eyebrow">Questions</div><h1 class="big">The questions I bring to a team</h1>
+      <p class="lede">Each one has an occasion attached: a project where it came up, and what we did about it.</p></div>
+    <div class="stack g28" id="questions"></div>
+      <p class="qa-tag">More to come</p>
+  </section>
+
+  <!-- ============ WRITING ============ -->
+  <section class="view col stack g44" id="v-writing" hidden>
+    <div><div class="eyebrow">Writing &amp; talks</div><h1 class="big">Spreading the practice</h1>
+        <p class="lede">Selected pieces below. Most of the back catalogue is on the pxd blog, in Korean.</p></div>
+    <div class="stack g28" id="writing"></div>
+    <div class="stack g20"><h3>More</h3><div class="wlinks" id="more"></div></div>
+  </section>
+
+  <!-- ============ CASE DETAIL ============ -->
+  <section class="view col stack g44" id="v-case" hidden>
+    <button class="back" data-go="projects">&larr; All projects</button>
+    <div><div class="eyebrow" id="c-pillar"></div><h1 class="big" id="c-title"></h1><p class="lede" id="c-lede"></p></div>
+    <div class="scope" id="c-scope" hidden></div>
+    <div class="stack g44" id="c-beats"></div>
+    <footer><button class="back" data-go="projects">&larr; All projects</button></footer>
+  </section>
+
+  <footer class="site-foot col">
+    <a href="mailto:syleeee@gmail.com">syleeee@gmail.com</a>
+    <a href="#" target="_blank" rel="noopener">Resume</a>
+    <a href="https://www.linkedin.com/in/seung-yoon-lee" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://syleeee.medium.com" target="_blank" rel="noopener">Medium</a>
+    <div class="colophon"><span>&copy; Seungyoon Lee 2026</span><span>🤖 Written by Seungyoon Lee, built with Claude</span></div>
+  </footer>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CASES=[
+ {id:"case-aiut",pillar:"System",disc:"ResearchOps",dom:"Telco · Enterprise system",title:"What AI-assisted ResearchOps needs",meta:"2026",j:1,
+  card:"A telco wanted usability testing to run faster than people can run it. We built the process around who requests a test and who has to act on the result.",
+  lede:"AI personas run the usability tests, and any team can request one when they need it. Accurate personas are one half of it; making the results flow to the people who act on them is the other.",
+  beats:[
+  ["Building the process together","A telecommunications company wanted usability testing to run faster and more efficiently across its customer-facing products and its internal systems.|I lead the project across the full scope, with the client and with my team: the synthetic personas, the evaluation criteria, the test inputs, the reporting, and the operating process around the testing platform, ReOps.ai. My job is to keep those parts connected while we build and refine them together."],
+  ["The AI found an error, just not the one we were looking for","One of the earliest tests used screens from an unreleased product. The task was to review a customer’s call usage, and partway through the flow the customer’s name changed.|The AI flagged it as an error. It was a real inconsistency, but it came from the screens we had prepared, not from the product, and it pulled attention away from the questions we were there to answer.|I raised it, and we changed the process so the research team could correct the test data itself before an evaluation ran. Screen preparation became part of the operating process, with someone responsible for keeping the data consistent."],
+  ["Refining the workflow through repeated trials","We ran about ten mock tests, and used them to refine the evaluations and the process around them at the same time.|Alongside the trials, AI personas and real users evaluated the same screens, and we compared what each of them found. That gave us a first basis for checking how far the two agree, while we kept improving how a test is prepared and run.|The screen-data problem was one example of what the trials surfaced. A fault that shows up in an evaluation often has to be fixed somewhere else: in the materials, in permissions, or in who is responsible for what."],
+  ["In use, and still changing","Product teams are using the process now, and we keep updating it as new situations come up.|The comparisons with real users have supported the early validation so far. We plan to repeat them regularly as the process develops.|What comes next is learning from the use itself: where teams still need support, which steps create work that could be avoided, and how far an AI-assisted finding can carry a product decision. Faster and more efficient is still the goal. How well the process delivers on it is not settled yet."]]},
+ {id:"case-cex",pillar:"Technology",disc:"UX Research",dom:"AI",title:"Our AI has to know the work",meta:"2025",j:1,
+  card:"A company wanted to know how employees were using its internal LLM. What explained their use was not their job title but the kind of work they were doing.",
+  lede:"Understanding how employees use an internal LLM. The two things that explained it best were the kind of work someone was doing, and who they reported to.",
+  beats:[
+  ["Fluency with the tool, and nothing more?","We ran a survey that drew more than 4,000 responses, and interviewed twenty people alongside it. The survey asked which features they used most and how satisfied they were. The gap that mattered was on the advanced ones: deep research reached nearly half of the heaviest users and almost none of the lightest.|Heavy users know the tool better, so of course they get further into it. That is probably true. I wanted to know what else was going on."],
+  ["Job function was only part of the picture","We expected people in sales, patents and design to use the LLM differently. Job function did not predict how anyone actually worked.|Two other things did. The type of work someone was doing: exploring possibilities, verifying information, communicating with others. And who they reported to, which shaped what they had to prepare, review and pass on.|So I grouped people by those two dimensions instead. It showed how someone works through a task, and where they stop."],
+  ["Supporting the moment of hesitation","One example came up around file uploads. People wanted to upload the documents they were working on: to carry a piece of work further, or to pull several files into one analysis. A notice under the prompt field said most material was fine, with some exceptions. They hesitated anyway, because they could not tell whether their own file was one of them.|We recommended automatic screening when text or a file is added, flagging anything potentially sensitive for review before submission. A small moment inside an ordinary task turned into a recommendation."],
+  ["Turning the findings into product direction","Findings from everyday work like that one became twenty-four recommendations, all of them about connecting the tool to the work.|The tool had been built to help a person get their own work done. We went in to study it as an internal LLM. What employees described was an enterprise LLM."]]},
+ {id:"case-callcentre",pillar:"People",disc:"UX Research, Strategy &amp; Design",dom:"Home appliances · Enterprise system",title:"The Post-its were the spec",meta:"2020",j:2,
+  card:"We assumed call-centre agents sat and answered questions. They were racing two targets at once, and the answers they needed were taped around their monitors.",
+  lede:"Redesigning a call-centre system for agents answering questions as a customer waits. The system had to make calls shorter while keeping customers satisfied.",
+  beats:[
+  ["A day in an agent’s life","A home-appliance manufacturer was preparing to rebuild its call-centre system. Our job was to find out what would make the agents’ work easier.|We spent several days watching agents handle live calls, then interviewed them about it."],
+  ["Where the seconds went","Agents were measured on two numbers: how many calls they took, and how satisfied the customer was at the end. Every second spent searching cost them both.|The product range was too wide to memorise, so an unfamiliar question meant looking something up while the customer waited. Agents wrote the answers to the most common questions on Post-its and stuck them around their screens.|The clock started the moment a call connected, while the agent was still working out who was calling and pulling up their details."],
+  ["Turning observations into requirements","What we saw, and what agents told us, showed which questions came up most and which answers they wanted in sight. Working with the design team, that became three parts of the experience.|<b>Answers within reach.</b> The most frequently needed answers went into the consultation screen itself.|<b>Customer context at the start.</b> Customer information came up as the call connected, so an agent started with something rather than nothing.|<b>Customer and product information together.</b> Both searchable in the same workspace."],
+  ["A simpler flow, an easier call","We brought the research together in an insights report and built a prototype of the proposed experience. Agents used it and told us how it held up against their work.|The call itself got simpler to run. What an agent had been assembling from several screens, with paper filling the gaps, arrived with the call.|The system was rebuilt and agents work in it now. The replacement was already planned. What the research changed is what went into it."]]},
+ {id:"case-lighthouse",pillar:"System",disc:"UX Strategy",dom:"Mobility",title:"An experience model across brands and sizes",meta:"2022",j:3,
+  card:"Several car brands on shared hardware, each defining experience on its own.  People do not use cars by brand or by size, so the definitions could not either.",
+  lede:"Cars are developed brand by brand and size by size. The experience inside the car does not divide along those lines, so we built the definitions around how the car is actually used.",
+  beats:[
+  ["Different brands, different sizes","A global carmaker builds several brands on shared architectures and components, in sizes running from large SUVs down to compacts. Vehicle experience was defined brand by brand and size by size."],
+  ["Taking experience apart: context, attitude, behaviour","We ran diary studies and in-depth interviews about how cars fitted into people’s days.|One man folded every seat flat so that he could sleep in the car on camping trips. What he talked about was not the room to lie down. It was lying there and looking up at the night sky. Another had built a mobile office in his, with a portable desk and whatever he needed to work between appointments. A third was focused on how he looked to other people when he got out of the car. He counted the puddle lamps that project the brand emblem onto the ground as essential. He also wanted the newest technology, and the features that come with the top trim, to be visible from outside.|What the car was for changed with the person and the situation. So we recorded the situation itself: what they were trying to do, how they wanted to feel, and what they actually did with the car."],
+  ["Which needs belong to everyone, and which to one brand","Not every need applies to every brand or every size of car. We took the needs into workshops with each brand’s product owners, UX designers and engineers, who sorted them four ways: shared across brands, particular to one brand, shared across sizes, particular to one size.|A survey afterwards put the same needs to users, and confirmed in their own words which were common and which belonged to one brand or one size."],
+  ["A model, not a list","The obvious output was a guideline per brand, or one per size. Either way it ends up a list, and a list is spent the moment the next product cycle starts.|So the deliverable was the model, built to be filtered rather than read. We set out how people, situations, vehicle types and needs relate to each other, so a team can pull what applies to its own case instead of starting the research over.|<b>Context.</b> When and where it happens: what the person is doing, who is with them, what they are after.|<b>Technology.</b> What the car can provide, within what that particular car is capable of.|<b>Attitude.</b> What the experience should feel like, and how that meets the brand.|<b>Behaviour.</b> What the person and the car actually do.|Fill the four slots and a scenario comes out. The same situation gives a different scenario in a different brand and a different car, and generating those with the teams is how we tested it."]]},
+{id:"case-coway",pillar:"People",disc:"UX Research &amp; Strategy",dom:"Home appliances",title:"What if our target users aren’t interested?",meta:"2018",j:3,
+  card:"A brief to design a water purifier for young adults living alone. The people we interviewed had no interest in owning one, so we gave about ten of them one to live with.",
+  lede:"Our client wanted to develop a water purifier for young adults living alone. But the people we spoke with had little interest in owning one. They could not tell us about an experience they had never had, so we went and bought them one.",
+  beats:[
+  ["I don’t need a water purifier.","We began with the question the brief gave us: what does a young adult living alone need from a water purifier?|In the interviews, however, participants had little to say about a product they wanted. Some had used a water purifier while living with their parents, but saw no reason to own one themselves. Bottled water was cheaper. There was no problem they expected a purifier to solve.|These repeated responses challenged the assumption behind the brief. Being the intended target audience did not mean they already had a need for the product.|I decided to change the research question. Instead of asking what they wanted, we would give them the chance to use one and watch what happened."],
+  ["Try living with a water purifier for a month.","About ten participants picked a brand and a model and kept it at home for a month. They went through all of it: choosing the machine, buying or renting it, having it installed, and the regular visits from a service engineer that come with owning one in Korea.|Even the people who had said they needed nothing made choices. Some wanted ice. Some picked whichever model took up the least floor space.|What they cared about when choosing was not what they cared about a week later. One participant picked a model that makes ice, then found the compressor kept them awake in a studio flat. The small green light that showed the machine was working was too bright to sleep next to.|@fig|In another home, a cat pressed a button while the participant was out and left water all over the kitchen floor.|They kept diaries and we visited every two weeks. What they could not describe in an interview was easy to point at once the machine was in the kitchen."],
+  ["Journey maps from choosing to recommending","We mapped the whole cycle of owning one: looking into it, buying it, living with it, having it serviced, and telling someone else about it. We put the maps up around a room and walked the client through them.|What came up was noise, light, how much floor space the machine took, how you buy or rent one, and who comes round to service it.|The product had been designed for a family in a bigger home. For one person in a small flat, almost all of it had to be rethought: how the machine works, but also how it is sold and how it is looked after."],
+  ["What gave them a reason to own one","A month in, still nobody was excited about purified water. What they talked about sat around the edges of the machine: coffee made in a hurry, ice good enough to put in front of guests, ice spheres for whisky. One participant built the purifier into a house party.|People who feel no need for a product can still have a way in, and it is rarely the thing the product is for. Here it was never the water. One of the two targets we ended on was a single woman who hosts at home, with ice as the reason she buys one, for the parties she already throws."]]},
+{id:"case-denso",pillar:"Business",disc:"UX Strategy",dom:"Smart home · Mobility",title:"Narrowing fifty-one ideas to four",meta:"2026",j:2,
+  card:"A global mobility company with fifty-one ideas where smart home meets mobility, and no basis for choosing between them. The narrowing was the work.",
+  lede:"Exploring where smart home and mobility meet, then narrowing fifty-one ideas to four. I helped the team agree the basis for choosing before anyone scored anything: company fit, technical feasibility, customer need.",
+  beats:[
+  ["Finding the opportunities","A global mobility company wanted new business where smart home meets mobility. We started with case research and set out eleven opportunity areas, then developed those into fifty-one ideas through ideation and co-creation workshops.|The question became which of them this company should actually pursue: what each idea was worth to a customer, what role the company would have to take, and what would have to be true for it to work."],
+  ["Mapping the ecosystem each idea would need","For each idea we mapped the value network it depended on: who provides what to whom, what each party gains, and what rests on what.|That moved the conversation past how appealing a concept was. An idea could be clearly good for customers and still need the company to hold a position it had no way to occupy. Once the relationships were on paper, we could say which ideas fitted the business as it stood and which would need new capabilities or partners."],
+  ["Agreeing on how to choose","We built a short evaluation: six questions across three criteria. <b>Company fit.</b> Does this sit with what the company can do and where it is going? <b>Technical feasibility.</b> Can we put the technology and the conditions in place? <b>Customer need.</b> Does it solve something worth solving?|People from product, engineering and strategy all filled it in. The point was not the scoring. It was agreeing the three criteria beforehand, so that functions which each favour a different axis had one basis they had all signed up to.|The three criteria collapsed onto two axes: what a customer needs on one, what this company could actually do on the other. After that the scores gave the discussion a shape, and where people disagreed it was clear which criterion they disagreed on."],
+  ["Letting go of a good idea","One concept would notice that a resident was in trouble in the shared areas of an apartment complex and raise an alert, without using cameras. The project team liked it, me included. It scored low and it did not go forward.|Sensors would have to go in across a whole complex before anything could be learned, so there was no small version to try first. And a false alarm in a safety service costs more than a false alarm in most products. I let it go, and it was the part of the project I found hardest.|It also taught me something I now use. An idea you cannot try at small scale is a different kind of bet from one you can, however good it is. That belongs in the criteria, not in a footnote about feasibility.|Four ideas went forward into prototypes, and then to leadership."],
+  ["Working in two languages","The client team worked in Japanese and ours in Korean. Rather than both sides pushing through in English, we ran the whole project on live AI translation. We spoke and wrote Korean, they spoke and wrote Japanese, and each side read the other translated. Workshops, reviews, working sessions, all of it.|It did not slow the project down, and it meant both sides could argue in the language they think in."]]}
+];
+
+const WRITING=[
+ {t:"Three Ways to Look at Synthetic Users",sub:"",lang:"Korean",pillar:"Technology",d:"The AI ResearchOps and synthetic-persona work, written up as a framework.",links:[["Overview","https://story.pxd.co.kr/1920"],["Anchor","https://story.pxd.co.kr/1921"],["Align","https://story.pxd.co.kr/1922"],["Act","https://story.pxd.co.kr/1923"]]},
+ {t:"AX: Reading Your Org\u2019s Rhythm First",sub:"",lang:"English",pillar:"Technology",d:"A capable model still meets a lukewarm response. Why? The same argument as the CEX case, made independently, which turns a project finding into a position.",u:"https://pxd.co.kr/en/insights/reading-your-orgs-workflow-rhythm-first-e"},
+ {t:"AX: A Moat Rather than Differentiation",sub:"",lang:"Korean",pillar:"Business",d:"The moat is not the newest AI features. It is the user context and the workflow built into the product, and that is the part nobody can copy.",u:"https://story.pxd.co.kr/1903"},
+ {t:"UX Research Series",sub:"",lang:"Korean",pillar:"System",d:"How research gets scoped, run and used, written for teams who have to do it themselves.",links:[["Type","https://story.pxd.co.kr/1580"],["Scope","https://story.pxd.co.kr/1663"],["Data","https://story.pxd.co.kr/1591"],["Expert interviews","https://story.pxd.co.kr/1642"],["Impact","https://story.pxd.co.kr/1745"]]},
+ {t:"UX in the Age of Agentic AI",sub:"",lang:"Korean",pillar:"Technology",d:"What changes about the experience when an agent, rather than a tool, is doing the work.",u:"https://story.pxd.co.kr/1859"},
+ {t:"Waymo UX",sub:"",lang:"Korean",pillar:"Technology",d:"Riding an autonomous ride-hailing service, and the UX questions it raises.",links:[["Riding in one","https://story.pxd.co.kr/1837"],["Hailing one","https://story.pxd.co.kr/1838"]]},
+ {t:"NFT Properties",sub:"",lang:"Korean",pillar:"System",d:"",links:[["Perception","https://story.pxd.co.kr/1696"],["Sports NFTs","https://story.pxd.co.kr/1697"]]},
+ {t:"NFTs on the Green: IRL Experiments in Golf",sub:"Talk, NFT.NYC 2024",lang:"English",pillar:"System",d:""}
+];
+
+const MORE=[
+ ["Global User Research with ChatGPT","https://story.pxd.co.kr/1671"],
+ ["Dogfooding","https://story.pxd.co.kr/1667"],
+ ["UX Consulting Skills, Learned from a Psychiatrist","https://story.pxd.co.kr/1564"],
+ ["Examining Our Own UX Maturity","https://story.pxd.co.kr/1506"],
+ ["Design Thinking","https://story.pxd.co.kr/1706"]
+];
+
+const QUESTIONS=[
+ {q:"Our target users aren’t interested. What now?",
+  a:"A brief to design a water purifier for young people living alone. The first interviews all said the same thing: no need for one, bottled water is cheaper. With nobody who could tell us what owning one was like, we made the users. Ten of them kept a purifier for a month, from choosing a model through buying or renting it to the regular service visits, and we watched what happened.",
+  go:"case-coway"},
+ {q:"Who can we learn from when the service doesn’t exist yet?",
+  a:"Golf tournament prizes were to be awarded as NFTs. There was nobody to ask about trading behaviour in a market that had not been built. We went to people already doing something close to it: sports bettors, and players who traded rare in-game items at volume. The product may not exist yet, but something close to the behaviour usually does, and finding that one thread gets you a long way."},
+ {q:"Some people say a Post-it on the monitor beats a notes app. Isn’t that just personal preference?",
+  a:"Call-centre agents had written the answers they needed most on Post-its and stuck them around their monitors. You could call that a personal habit. But across thousands of calls they had built an index: which questions come up, and which answer each one needs. We worked out what that index covered, whether the database could supply it, and designed it into the screen they already had open.",
+  go:"case-callcentre"},
+ {q:"What do the numbers tell us, and what do they leave out?",
+  a:"A music streaming service was weighing a lower-priced plan in Korea. I designed and ran the survey, then read it alongside qualitative interviews. From the survey we learned how many; from the interviews, what people were actually trying to avoid paying for. A lower-priced plan launched within months."},
+ {q:"What needs to be true for an idea to work?",
+  a:"A carmaker wanted new uses for a multi-purpose vehicle. Ideas came quickly. What took the work was mapping each party, from commerce platforms and shared offices to resale services and hotels, and what they would each have to provide and receive before the service could exist. An idea on its own is weightless. It needs bones and muscle, and a way for something to move between the parts."},
+ {q:"Where do you look when the question is about the future?",
+  a:"Ideas about the future sometimes come from the far edges of the present. To work out what a kitchen might become, we went to the edges of what a kitchen is now: people who grow everything they eat at home, and people who never cook at all. Neither group is the market. Both of them make visible what the middle is only starting to do."},
+ {q:"Fifty-one opportunities. Which ones can we actually build?",
+  a:"Fifty-one of them, and no basis for choosing. We built one: three criteria, six questions, filled in by stakeholders from every function so that product, engineering and strategy stopped arguing from whichever axis each already favoured.",
+  go:"case-denso"},
+ {q:"What is a new technology actually useful for?",
+  a:"An internal LLM that performed well and landed flat. The gap was not capability. The product treated its user as an individual, and everyone we spoke to was using it strictly as an employee. What decided whether it was useful was not how good the model was, but whether it reached into the work.",
+  go:"case-cex"},
+ {q:"AI makes it fast. Can we trust what it finds?",
+  a:"We are all working this one out. One company builds AI personas that stand in for its own users and runs usability tests with them. Once AI is in the loop, the ResearchOps question is where a human still has to be, and what that person is accountable for once a report has been generated.",
+  go:"case-aiut"}
+];
+
+const ARCHIVE=[
+["2026","Entertainment","Search and discovery visibility research","Foundational research, in-depth interviews"],
+["2026","Mobility","Smart home and mobility opportunity research","Foundational research, co-creation workshop, UX strategy, business model design"],
+["2026","AI · Enterprise system","AI agent platform UX/UI","UX/UI design"],
+["2025","Finance","Account balance and portfolio value usability testing","Evaluative research, usability testing"],
+["2025","AI · Enterprise system","Enterprise LLM product user research","Foundational and evaluative research, in-depth interviews"],
+["2025","Tech","Next-generation mobile OS UX proposal","UX/UI design, visual design"],
+["2025","Home appliances · Commerce","Subscription feature on a home appliance D2C site","Evaluative research, usability testing"],
+["2025","Food","Gen Z and Gen Alpha foodie research","Foundational research, in-depth interviews"],
+["2024","Tech","Photo gallery experience in a mobile OS","Foundational research, UX design"],
+["2024","Entertainment","Lyrics feature concept testing","Concept testing"],
+["2024","Mobility","Right-hand-drive (RHD) user research","Evaluative research, in-car and lab testing in the UK and India"],
+["2024","Blockchain · Gaming","Global blockchain gaming platform research","Evaluative research, analytics, UX/UI design"],
+["2023","Blockchain · Gaming","Support centre for a global blockchain gaming platform","Foundational research, user and stakeholder interviews in Korea, Portugal, the Philippines, Indonesia and China"],
+["2023","Blockchain","Digital and NFT experience for a sponsored sports championship","NFT experience strategy, UX/UI design, prototyping, branding"],
+["2022","Mobility","EV UX guideline development","Foundational research, UX strategy, mixed-methods research, UX guidelines"],
+["2022","Home appliances","New water purifier proof of concept","Evaluative research, in-home interviews"],
+["2022","Entertainment","Creator research with Gen Z audiences","Foundational research, in-depth interviews, co-creation workshops in Korea, Japan and Indonesia"],
+["2022","Tech","Foldable devices foundational research","Foundational research, in-depth interviews"],
+["2021","Tech · Gaming","Mobile gaming platform research","Evaluative research, in-depth interviews"],
+["2021","Entertainment","Low-tier plan user research","Foundational research, quantitative"],
+["2021","Finance","New non-financial service opportunity development","Concept development, UX/UI design, prototyping, focus groups"],
+["2021","Blockchain","Cold wallet competitive research","Competitive analysis"],
+["2021","Tech","App store quality metrics research","Evaluative research, moderated and unmoderated"],
+["2021","Home appliances · Commerce","Home appliance D2C site user testing","Evaluative research, usability testing, card sorting"],
+["2021","Finance","Corporate banking UX design","Evaluative research, UX/UI design"],
+["2021","Tech","Mobile ad platform comparative research","Evaluative research, in-depth interviews"],
+["2021","Entertainment","Creator feature concept testing for a global media platform","Concept testing, in-depth interviews"],
+["2020","Social media","Health hub on a global social platform","Foundational research, concept testing, in-depth interviews"],
+["2020","Home appliances · Enterprise system","Call-centre system UX design","UX strategy, UX/UI design"],
+["2020","Travel","Online travel agency app UX design","Evaluative research, analytics, UX strategy, UX/UI design, prototyping"],
+["2019","AI · Semiconductor","AI and ML transformation UX","User research, UX strategy, UX design"],
+["2019","Mobility","Premium automotive brand app UX","Contextual research, UX strategy, UX/UI design, design system and guidelines"],
+["2018","Mobility","Smart city multi-purpose vehicle UX","Expert interviews, co-creation workshop, UX strategy, business model design"],
+["2018","Home appliances","Water purifier concept development for single-person households","Foundational research, diary study, in-depth interviews, co-creation workshop, UX strategy"],
+["2017","Healthcare","Service design for Seongnam Citizens Medical Center","Service design, stakeholder research, co-creation workshop, UX strategy, prototyping"],
+["2017","Healthcare","Health information exchange UX for Seoul National University Bundang Hospital","User research, UX strategy, UX/UI design, prototyping"],
+["2016","Tech","Wearable OS UX guideline development","UX guidelines, UX writing"],
+];
+
+
+function cardHTML(c){
+  return '<button class="card" data-go="'+c.id+'"><span class="tag">'+c.disc+'</span><h3>'+c.title+'</h3><p>'+c.card+'</p><span class="meta">'+c.dom+'</span></button>';
+}
+function fill(){
+  var HOMEQ=["case-coway","case-callcentre","case-denso","case-aiut"];
+  document.getElementById('home-q').innerHTML=HOMEQ.map(function(id){
+    var q=QUESTIONS.filter(function(x){return x.go===id})[0];
+    return '<button class="qrow" data-go="'+q.go+'"><span class="m"></span><span class="q">'+q.q+'</span><span class="a">→</span></button>';
+  }).join('');
+  document.getElementById('all-cards').innerHTML=CASES.map(cardHTML).join('');
+  document.querySelectorAll('[data-pillar]').forEach(function(el){
+    el.innerHTML=CASES.filter(function(c){return c.pillar===el.dataset.pillar}).map(cardHTML).join('');
+  });
+  document.getElementById('archive').innerHTML=ARCHIVE.map(function(r){
+    return '<tr><td class="num">'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>';
+  }).join('');
+  document.getElementById('questions').innerHTML=QUESTIONS.map(function(q){
+    return '<div class="qa"><h3>'+q.q+'</h3><p>'+q.a+'</p>'+
+      (q.go?'<div class="qa-foot"><button class="qa-link" data-go="'+q.go+'">Read the case &rarr;</button></div>':'')+'</div>';
+  }).join('');
+  document.getElementById('more').innerHTML=MORE.map(function(m){
+    return '<a href="'+m[1]+'" target="_blank" rel="noopener">'+m[0]+' &rarr;</a>';
+  }).join('');
+  document.getElementById('writing').innerHTML=WRITING.map(function(w){
+    return '<div class="entry"><div class="top"><h3>'+w.t+'</h3><span class="lang">'+w.lang+'</span><span class="lang">'+w.pillar+'</span></div>'+
+      (w.sub?'<p><i>'+w.sub+'</i></p>':'')+(w.d?'<p>'+w.d+'</p>':'')+
+      (w.links?'<div class="wlinks">'+w.links.map(function(l){return '<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+' &rarr;</a>'}).join('')+'</div>'
+             :w.u?'<a href="'+w.u+'" target="_blank" rel="noopener">Read &rarr;</a>':'')+'</div>';
+  }).join('');
+}
+
+function bar(y,w,fill){return '<rect x="128" y="'+y+'" width="'+w+'" height="14" rx="2" fill="var(--'+fill+')"/>'}
+function box(x,y,w,h,f,s){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="3" fill="var(--'+f+')" stroke="var(--'+s+')" stroke-width="1"/>'}
+
+function note(x,y,r){return '<g transform="rotate('+r+' '+(x+9)+' '+(y+9)+')">'+
+ '<rect x="'+x+'" y="'+y+'" width="18" height="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>'+
+ '<line x1="'+(x+4)+'" y1="'+(y+7)+'" x2="'+(x+14)+'" y2="'+(y+7)+'" stroke="var(--accent)" stroke-width="1"/>'+
+ '<line x1="'+(x+4)+'" y1="'+(y+11)+'" x2="'+(x+11)+'" y2="'+(y+11)+'" stroke="var(--accent)" stroke-width="1"/></g>'}
+function screen(x){return '<rect x="'+x+'" y="34" width="168" height="112" rx="4" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>'+
+ '<rect x="'+(x+6)+'" y="40" width="156" height="94" fill="var(--surface)"/>'+
+ '<line x1="'+(x+16)+'" y1="56" x2="'+(x+96)+'" y2="56" stroke="var(--rule)" stroke-width="2"/>'+
+ '<line x1="'+(x+16)+'" y1="70" x2="'+(x+140)+'" y2="70" stroke="var(--rule)" stroke-width="2"/>'+
+ '<line x1="'+(x+16)+'" y1="84" x2="'+(x+120)+'" y2="84" stroke="var(--rule)" stroke-width="2"/>'+
+ '<line x1="'+(x+16)+'" y1="98" x2="'+(x+140)+'" y2="98" stroke="var(--rule)" stroke-width="2"/>'+
+ '<line x1="'+(x+16)+'" y1="112" x2="'+(x+72)+'" y2="112" stroke="var(--rule)" stroke-width="2"/>'+
+ '<rect x="'+(x+72)+'" y="146" width="24" height="24" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>'+
+ '<rect x="'+(x+54)+'" y="170" width="60" height="5" rx="2" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>'}
+
+var FIGS={
+"case-denso:0":{cap:"Eleven areas became fifty-one ideas, scored down to ten, worked up with the client, and proposed as four.",svg:
+'<svg viewBox="0 0 440 144" role="img" aria-label="Five stages left to right: eleven opportunity areas, fifty-one seed ideas, a top ten after scoring, concepts from a co-creation workshop, and four proposals.">'+
+'<text class="svg-tag" x="40.0" y="13" text-anchor="middle">OPPORTUNITY</text>'+
+'<text class="svg-tag" x="40.0" y="25" text-anchor="middle">AREAS</text>'+
+'<rect x="9.5" y="51.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="25.5" y="51.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="41.5" y="51.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="57.5" y="51.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="9.5" y="67.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="25.5" y="67.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="41.5" y="67.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="57.5" y="67.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="9.5" y="83.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="25.5" y="83.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="41.5" y="83.5" width="13.0" height="13.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M34.0 108 L40.0 114 L46.0 108" fill="none" stroke="var(--rule)" stroke-width="1.2"/>'+
+'<text class="svg-lab" x="40.0" y="134" text-anchor="middle">11 areas</text>'+
+'<text class="svg-tag" x="130.0" y="13" text-anchor="middle">SEED</text>'+
+'<text class="svg-tag" x="130.0" y="25" text-anchor="middle">IDEAS</text>'+
+'<rect x="95.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="103.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="111.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="119.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="127.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="135.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="143.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="151.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="159.0" y="51.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="95.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="103.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="111.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="119.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="127.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="135.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="143.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="151.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="159.0" y="59.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="95.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="103.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="111.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="119.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="127.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="135.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="143.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="151.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="159.0" y="67.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="95.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="103.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="111.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="119.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="127.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="135.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="143.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="151.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="159.0" y="75.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="95.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="103.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="111.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="119.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="127.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="135.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="143.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="151.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="159.0" y="83.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="95.0" y="91.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="103.0" y="91.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="111.0" y="91.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="119.0" y="91.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="127.0" y="91.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="135.0" y="91.0" width="6.0" height="6.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M124.0 108 L130.0 114 L136.0 108" fill="none" stroke="var(--rule)" stroke-width="1.2"/>'+
+'<text class="svg-lab" x="130.0" y="134" text-anchor="middle">51 ideas</text>'+
+'<text class="svg-tag" x="220.0" y="13" text-anchor="middle">PRIORITY</text>'+
+'<text class="svg-tag" x="220.0" y="25" text-anchor="middle">SCORING</text>'+
+'<rect x="184.0" y="60.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="199.0" y="60.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="214.0" y="60.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="229.0" y="60.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="244.0" y="60.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="184.0" y="75.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="199.0" y="75.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="214.0" y="75.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="229.0" y="75.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="244.0" y="75.5" width="12.0" height="12.0" rx="1.6" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M214.0 108 L220.0 114 L226.0 108" fill="none" stroke="var(--rule)" stroke-width="1.2"/>'+
+'<text class="svg-lab" x="220.0" y="134" text-anchor="middle">top 10</text>'+
+'<text class="svg-tag" x="310.0" y="13" text-anchor="middle">CO-CREATION</text>'+
+'<text class="svg-tag" x="310.0" y="25" text-anchor="middle">WORKSHOP</text>'+
+'<rect x="277.0" y="50.0" width="40" height="26" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="290.0" y="61.0" width="40" height="26" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="303.0" y="72.0" width="40" height="26" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M304.0 108 L310.0 114 L316.0 108" fill="none" stroke="var(--rule)" stroke-width="1.2"/>'+
+'<text class="svg-lab" x="310.0" y="134" text-anchor="middle">UX concepts</text>'+
+'<text class="svg-tag" x="400.0" y="13" text-anchor="middle">FOUR</text>'+
+'<text class="svg-tag" x="400.0" y="25" text-anchor="middle">INITIATIVES</text>'+
+'<rect x="378.0" y="52.0" width="20.0" height="20.0" rx="1.6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>'+
+'<rect x="402.0" y="52.0" width="20.0" height="20.0" rx="1.6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>'+
+'<rect x="378.0" y="76.0" width="20.0" height="20.0" rx="1.6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>'+
+'<rect x="402.0" y="76.0" width="20.0" height="20.0" rx="1.6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>'+
+'<path d="M394.0 108 L400.0 114 L406.0 108" fill="none" stroke="var(--rule)" stroke-width="1.2"/>'+
+'<text class="svg-lab" x="400.0" y="134" text-anchor="middle">4 proposals</text>'+
+'</svg>'},
+
+"case-denso:2":{cap:"The three criteria collapsed onto two axes. Only the top right went forward now; the rest were not rejected, they were placed.",svg:
+'<svg viewBox="0 0 440 214" role="img" aria-label="A two by two grid. Customer need on the vertical axis, company fit and feasibility on the horizontal. Quadrants labelled big bet, develop now, hold and quick win, with develop now highlighted.">'+
+'<rect x="246" y="22" width="168" height="82" fill="var(--accent-soft)"/>'+
+'<line x1="246" y1="22" x2="246" y2="186" stroke="var(--rule)" stroke-width="1" stroke-dasharray="3 4"/>'+
+'<line x1="78" y1="104" x2="414" y2="104" stroke="var(--rule)" stroke-width="1" stroke-dasharray="3 4"/>'+
+'<line x1="78" y1="186" x2="414" y2="186" stroke="var(--ink)" stroke-width="1.2"/>'+
+'<line x1="78" y1="22" x2="78" y2="186" stroke="var(--ink)" stroke-width="1.2"/>'+
+'<text class="svg-ink" x="162.0" y="68.0" text-anchor="middle">Big bet</text>'+
+'<text class="svg-ink" x="330.0" y="68.0" text-anchor="middle">Develop now</text>'+
+'<text class="svg-ink" x="162.0" y="150.0" text-anchor="middle">Hold</text>'+
+'<text class="svg-ink" x="330.0" y="150.0" text-anchor="middle">Quick win</text>'+
+'<text class="svg-tag" x="24" y="104" text-anchor="middle" transform="rotate(-90 24 104)">CUSTOMER NEED</text>'+
+'<text class="svg-tag" x="246.0" y="206" text-anchor="middle">COMPANY FIT AND FEASIBILITY</text>'+
+'</svg>'},
+
+"case-callcentre:1":{cap:"Agents had worked out their own ways to answer fast. Post-its were one of them.",svg:
+'<svg viewBox="0 0 440 196" role="img" aria-label="Two monitors side by side on a desk. The left one is ringed on all four sides with handwritten Post-its; the right one has a few along the top.">'+
+screen(24)+screen(248)+
+note(28,12,-5)+note(56,10,3)+note(84,13,-2)+note(112,9,5)+note(140,12,-4)+note(168,10,2)+
+note(2,46,-6)+note(3,74,4)+note(1,102,-3)+
+note(198,44,5)+note(199,72,-4)+note(197,100,3)+
+note(42,152,-5)+note(150,154,4)+
+note(268,12,-3)+note(312,10,4)+note(356,13,-2)+
+'<line x1="6" y1="182" x2="434" y2="182" stroke="var(--ink)" stroke-width="1.5"/>'+
+'</svg>'},
+
+"case-callcentre:3":{cap:"Before, the agent pulled the call together from scattered screens while the queue waited. After, what the call needed was already in one place.",svg:
+'<svg viewBox="0 0 440 240" role="img" aria-label="Three rows, system, agent and customer, drawn twice. Before: the system is four separate blocks the agent reads from and types back into, and the next customer waits. After: the system is one block feeding the agent, and the next customer is taken straight away.">'+
+'<text class="svg-tag" x="2" y="45" text-anchor="start">SYSTEM</text>'+
+'<text class="svg-tag" x="2" y="122" text-anchor="start">AGENT</text>'+
+'<text class="svg-tag" x="2" y="199" text-anchor="start">CUSTOMER</text>'+
+'<text class="svg-tag" x="165" y="14" text-anchor="middle">BEFORE</text>'+
+'<text class="svg-tag" x="350" y="14" text-anchor="middle">AFTER</text>'+
+'<rect x="105" y="28" width="24" height="26" rx="2" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<line x1="117.0" y1="58.0" x2="148.2" y2="98.0" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M142.1 95.1 L146.9 91.4 L148.2 98.0 Z" fill="var(--rule)"/>'+
+'<path d="M118.3 64.6 L123.1 60.9 L117.0 58.0 Z" fill="var(--rule)"/>'+
+'<rect x="137" y="28" width="24" height="26" rx="2" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<line x1="149.0" y1="58.0" x2="159.4" y2="98.0" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M155.0 92.9 L160.8 91.4 L159.4 98.0 Z" fill="var(--rule)"/>'+
+'<path d="M147.6 64.6 L153.4 63.1 L149.0 58.0 Z" fill="var(--rule)"/>'+
+'<rect x="169" y="28" width="24" height="26" rx="2" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<line x1="181.0" y1="58.0" x2="170.6" y2="98.0" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M169.2 91.4 L175.0 92.9 L170.6 98.0 Z" fill="var(--rule)"/>'+
+'<path d="M176.6 63.1 L182.4 64.6 L181.0 58.0 Z" fill="var(--rule)"/>'+
+'<rect x="201" y="28" width="24" height="26" rx="2" fill="var(--surface)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<line x1="213.0" y1="58.0" x2="181.8" y2="98.0" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M183.1 91.4 L187.9 95.1 L181.8 98.0 Z" fill="var(--rule)"/>'+
+'<path d="M206.9 60.9 L211.7 64.6 L213.0 58.0 Z" fill="var(--rule)"/>'+
+'<text class="svg-tag" x="165" y="70" text-anchor="middle">IN PIECES</text>'+
+'<rect x="290" y="28" width="120" height="26" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/>'+
+'<text class="svg-tag-a" x="350" y="70" text-anchor="middle">IN ONE PLACE</text>'+
+'<line x1="350" y1="76" x2="350" y2="93" stroke="var(--accent)" stroke-width="1.6"/>'+
+'<path d="M346 93 L354 93 L350 100 Z" fill="var(--accent)"/>'+
+'<g transform="translate(165 118) scale(0.55) translate(-165 -118)">'+
+'<circle cx="165" cy="111" r="11" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<path d="M145 147 Q145 126 165 126 Q185 126 185 147 Z" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<path d="M150 108 Q165 90 180 108" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<rect x="147" y="104" width="6" height="13" rx="3" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<rect x="177" y="104" width="6" height="13" rx="3" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<path d="M150 117 Q151 128 160 127" fill="none" stroke="var(--ink)" stroke-width="2.2"/>'+
+'</g>'+
+'<g transform="translate(350 118) scale(0.55) translate(-350 -118)">'+
+'<circle cx="350" cy="111" r="11" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<path d="M330 147 Q330 126 350 126 Q370 126 370 147 Z" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<path d="M335 108 Q350 90 365 108" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<rect x="332" y="104" width="6" height="13" rx="3" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<rect x="362" y="104" width="6" height="13" rx="3" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<path d="M335 117 Q336 128 345 127" fill="none" stroke="var(--ink)" stroke-width="2.2"/>'+
+'</g>'+
+'<line x1="165" y1="138" x2="165" y2="179" stroke="var(--rule)" stroke-width="1.4" stroke-dasharray="2 5"/>'+
+'<line x1="350" y1="138" x2="350" y2="175" stroke="var(--accent)" stroke-width="1.6"/>'+
+'<path d="M346 175 L354 175 L350 182 Z" fill="var(--accent)"/>'+
+'<g transform="translate(140 195) scale(0.55) translate(-140 -195)">'+
+'<circle cx="140" cy="184" r="11" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<path d="M121 218 Q121 198 140 198 Q159 198 159 218 Z" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'</g>'+
+'<g transform="translate(196 195) scale(0.55) translate(-196 -195)">'+
+'<circle cx="196" cy="184" r="11" fill="none" stroke="var(--rule)" stroke-width="2.6"/>'+
+'<path d="M177 218 Q177 198 196 198 Q215 198 215 218 Z" fill="none" stroke="var(--rule)" stroke-width="2.6"/>'+
+'</g>'+
+'<g transform="translate(325 195) scale(0.55) translate(-325 -195)">'+
+'<circle cx="325" cy="184" r="11" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'<path d="M306 218 Q306 198 325 198 Q344 198 344 218 Z" fill="none" stroke="var(--ink)" stroke-width="2.6"/>'+
+'</g>'+
+'<g transform="translate(381 195) scale(0.55) translate(-381 -195)">'+
+'<circle cx="381" cy="184" r="11" fill="none" stroke="var(--rule)" stroke-width="2.6"/>'+
+'<path d="M362 218 Q362 198 381 198 Q400 198 400 218 Z" fill="none" stroke="var(--rule)" stroke-width="2.6"/>'+
+'</g>'+
+'<line x1="153" y1="200" x2="183" y2="200" stroke="var(--rule)" stroke-width="1.4" stroke-dasharray="2 5"/>'+
+'<line x1="338" y1="200" x2="362" y2="200" stroke="var(--accent)" stroke-width="1.6"/>'+
+'<path d="M362 196 L362 204 L368 200 Z" fill="var(--accent)"/>'+
+'<text class="svg-tag" x="165" y="228" text-anchor="middle">THE QUEUE WAITS</text>'+
+'<text class="svg-tag-a" x="350" y="228" text-anchor="middle">THE NEXT ONE STARTS</text>'+
+'</svg>'},
+
+"case-coway:1":{cap:"They drank bottled water and owned no purifier. Asked to choose one, they still knew what they wanted: ice for the parties they threw, or whichever model took the least space in a small kitchen.",svg:
+'<div style="display:flex;gap:10px">'+
+'<img src="coway-1.jpg" alt="A pack of bottled water on the floor under a chair." loading="lazy" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block">'+
+'<img src="coway-2.jpg" alt="A small wall-mounted purifier above a narrow kitchen sink, with a second unit on the worktop." loading="lazy" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block">'+
+'<img src="coway-3.jpg" alt="Glasses holding single round ice spheres, beside whisky bottles on a table." loading="lazy" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block">'+
+'</div>'+
+''},
+
+"case-coway:2":{cap:"It ran from first hearing about a purifier through buying, using and servicing one, to recommending it. The dips along the bottom are where it went wrong.",svg:
+'<img src="coway-map.jpg" alt="A wide journey map. Rows for timeline, stages, think and feel, what people do, scenarios and emotional highs and lows, running left to right across the whole of owning a water purifier." loading="lazy" style="width:100%;height:auto;border-radius:6px;display:block">'},
+
+"case-coway:3":{cap:"The appliance is drawn the way participants saw it. The thing they actually wanted is the glass.",svg:
+'<svg viewBox="0 0 440 190" role="img" aria-label="A water purifier drawn in faint outline on a counter, beside a glass of ice drawn boldly in the accent colour.">'+
+'<rect x="60" y="28" width="92" height="132" rx="7" fill="none" stroke="var(--rule)" stroke-width="1.5"/>'+
+'<rect x="76" y="92" width="60" height="50" rx="3" fill="none" stroke="var(--rule)" stroke-width="1.5"/>'+
+'<line x1="106" y1="92" x2="106" y2="104" stroke="var(--rule)" stroke-width="1.5"/>'+
+'<circle cx="86" cy="52" r="5" fill="none" stroke="var(--rule)" stroke-width="1.5"/>'+
+'<line x1="100" y1="48" x2="130" y2="48" stroke="var(--rule)" stroke-width="1.5"/>'+
+'<line x1="100" y1="58" x2="122" y2="58" stroke="var(--rule)" stroke-width="1.5"/>'+
+'<text class="svg-tag" x="106" y="178" text-anchor="middle">WHAT THE BRIEF WAS ABOUT</text>'+
+'<path d="M252 96 L262 158 L306 158 L316 96 Z" fill="none" stroke="var(--accent)" stroke-width="2"/>'+
+'<rect x="262" y="108" width="20" height="20" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5" transform="rotate(-8 272 118)"/>'+
+'<rect x="286" y="114" width="20" height="20" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5" transform="rotate(10 296 124)"/>'+
+'<rect x="270" y="132" width="20" height="20" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5" transform="rotate(5 280 142)"/>'+
+'<text class="svg-tag-a" x="284" y="178" text-anchor="middle">WHAT THEY TALKED ABOUT</text>'+
+'<line x1="20" y1="160" x2="420" y2="160" stroke="var(--ink)" stroke-width="1.5"/>'+
+'</svg>'},
+
+"case-lighthouse:0":{cap:"The range runs from large SUV down to compact. Each size had its experience defined on its own, in every brand.",svg:
+'<svg viewBox="0 0 440 116" role="img" aria-label="Three vehicle silhouettes on a pale panel: a large SUV, a sedan and a compact.">'+
+'<rect x="0" y="0" width="440" height="116" rx="6" fill="var(--surface)"/>'+
+'<g transform="translate(184.0 0) scale(-1 1)">'+
+'<path d="M35.7 55.5 L35.7 35.2 Q36.3 23.6 43.0 23.0 L103.6 22.4 Q109.6 22.4 112.4 25.5 L126.8 40.4 L143.6 41.0 Q148.8 41.5 149.4 48.0 L149.4 55.5 L140.5 57.8 Q123.9 35.6 107.3 57.8 L77.9 57.8 Q61.3 35.6 44.7 57.8 Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"/>'+
+'<line x1="126.8" y1="40.4" x2="44.4" y2="36.9" stroke="var(--rule)" stroke-width="1"/>'+
+'<circle cx="61.3" cy="54.3" r="15.7" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1"/>'+
+'<circle cx="61.3" cy="54.3" r="6.3" fill="none" stroke="var(--rule)" stroke-width="1"/>'+
+'<circle cx="123.9" cy="54.3" r="15.7" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1"/>'+
+'<circle cx="123.9" cy="54.3" r="6.3" fill="none" stroke="var(--rule)" stroke-width="1"/>'+
+'</g>'+
+'<g transform="translate(482.0 0) scale(-1 1)">'+
+'<path d="M187.7 59.0 L187.7 52.0 Q188.2 47.8 193.5 47.1 L204.7 46.7 L222.3 34.1 Q225.2 31.9 229.6 31.9 L247.6 31.9 Q252.7 31.9 254.9 34.1 L267.4 47.3 L288.9 47.8 Q294.4 48.2 294.9 53.9 L294.9 59.0 L285.4 60.6 Q272.0 42.7 258.6 60.6 L223.6 60.6 Q210.2 42.7 196.8 60.6 Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"/>'+
+'<line x1="267.4" y1="47.3" x2="194.8" y2="46.9" stroke="var(--rule)" stroke-width="1"/>'+
+'<circle cx="210.2" cy="57.4" r="12.7" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1"/>'+
+'<circle cx="210.2" cy="57.4" r="5.1" fill="none" stroke="var(--rule)" stroke-width="1"/>'+
+'<circle cx="272.0" cy="57.4" r="12.7" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1"/>'+
+'<circle cx="272.0" cy="57.4" r="5.1" fill="none" stroke="var(--rule)" stroke-width="1"/>'+
+'</g>'+
+'<g transform="translate(738.0 0) scale(-1 1)">'+
+'<path d="M333.5 61.1 L333.5 49.6 Q334.2 43.1 339.0 42.6 L373.4 42.3 Q378.0 42.3 380.0 44.3 L391.2 53.3 L400.8 53.6 Q404.9 53.9 405.3 58.2 L405.3 61.9 L400.1 62.6 Q389.7 48.7 379.4 62.6 L360.1 62.6 Q349.8 48.7 339.4 62.6 Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"/>'+
+'<line x1="391.2" y1="53.3" x2="339.0" y2="49.9" stroke="var(--rule)" stroke-width="1"/>'+
+'<circle cx="349.8" cy="60.2" r="9.8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1"/>'+
+'<circle cx="349.8" cy="60.2" r="3.9" fill="none" stroke="var(--rule)" stroke-width="1"/>'+
+'<circle cx="389.7" cy="60.2" r="9.8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.1"/>'+
+'<circle cx="389.7" cy="60.2" r="3.9" fill="none" stroke="var(--rule)" stroke-width="1"/>'+
+'</g>'+
+'<text class="svg-tag" x="92.0" y="96" text-anchor="middle">LARGE SUV</text>'+
+'<text class="svg-tag" x="241.0" y="96" text-anchor="middle">SEDAN</text>'+
+'<text class="svg-tag" x="369.0" y="96" text-anchor="middle">COMPACT</text>'+
+'</svg>'},
+
+"case-aiut:1":{cap:"The same task, a different customer. The AI reported it as an error, and the error was ours.",svg:
+'<svg viewBox="0 0 440 124" role="img" aria-label="Four test screens in sequence. The customer name is the same on the first two screens and different on the last two.">'+
+'<text class="svg-tag-a" x="222" y="12" text-anchor="middle">ERROR IN THE TEST DATA</text>'+
+'<path d="M222 18 L222 54" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 3"/>'+
+box(14,24,88,62,'surface','rule')+box(124,24,88,62,'surface','rule')+box(234,24,88,62,'surface','rule')+box(344,24,88,62,'surface','rule')+
+'<text class="svg-num" x="58" y="46" text-anchor="middle">Jane Kim</text>'+
+'<text class="svg-num" x="168" y="46" text-anchor="middle">Jane Kim</text>'+
+'<text class="svg-num" x="278" y="46" text-anchor="middle" fill="var(--accent)">John Lee</text>'+
+'<text class="svg-num" x="388" y="46" text-anchor="middle" fill="var(--accent)">John Lee</text>'+
+'<rect x="30" y="60" width="56" height="4" rx="2" fill="var(--rule)"/><rect x="30" y="70" width="38" height="4" rx="2" fill="var(--rule)"/>'+
+'<rect x="140" y="60" width="56" height="4" rx="2" fill="var(--rule)"/><rect x="140" y="70" width="38" height="4" rx="2" fill="var(--rule)"/>'+
+'<rect x="250" y="60" width="56" height="4" rx="2" fill="var(--rule)"/><rect x="250" y="70" width="38" height="4" rx="2" fill="var(--rule)"/>'+
+'<rect x="360" y="60" width="56" height="4" rx="2" fill="var(--rule)"/><rect x="360" y="70" width="38" height="4" rx="2" fill="var(--rule)"/>'+
+'<path d="M106 55 L118 55 M114 51 L118 55 L114 59" fill="none" stroke="var(--rule)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>'+
+'<path d="M216 55 L228 55 M224 51 L228 55 L224 59" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>'+
+'<path d="M326 55 L338 55 M334 51 L338 55 L334 59" fill="none" stroke="var(--rule)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>'+
+'<text class="svg-tag" x="58" y="104" text-anchor="middle">SCREEN 1</text><text class="svg-tag" x="168" y="104" text-anchor="middle">SCREEN 2</text><text class="svg-tag" x="278" y="104" text-anchor="middle">SCREEN 3</text><text class="svg-tag" x="388" y="104" text-anchor="middle">SCREEN 4</text>'+
+'</svg>'},
+"case-aiut:0":{cap:"The boxes were the straightforward part. The arrows are where the process had to be designed.",svg:
+'<svg viewBox="0 0 440 158" role="img" aria-label="A request loop: a product owner requests a test, the AI usability test runs, a report comes back and the product owner decides. The intake and delivery steps between them are the hard parts.">'+
+'<text class="svg-tag-a" x="132" y="20" text-anchor="middle">INTAKE</text><text class="svg-tag-a" x="264" y="20" text-anchor="middle">DELIVERY</text>'+
+'<path d="M132 30 L132 72 M264 30 L264 72" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 3"/>'+
+box(10,52,112,58,'surface','rule')+box(142,52,112,58,'surface','rule')+box(274,52,112,58,'surface','rule')+
+'<text class="svg-ink" x="66" y="78" text-anchor="middle">Request</text><text class="svg-tag" x="66" y="96" text-anchor="middle">PRODUCT OWNER</text>'+
+'<text class="svg-ink" x="198" y="78" text-anchor="middle">Test runs</text><text class="svg-tag" x="198" y="96" text-anchor="middle">REOPS.AI</text>'+
+'<text class="svg-ink" x="330" y="78" text-anchor="middle">Decision</text><text class="svg-tag" x="330" y="96" text-anchor="middle">PRODUCT OWNER</text>'+
+'<path d="M124 81 L139 81 M135 77 L139 81 L135 85" stroke="var(--accent)" stroke-width="1.5" fill="none"/>'+
+'<path d="M256 81 L271 81 M267 77 L271 81 L267 85" stroke="var(--accent)" stroke-width="1.5" fill="none"/>'+
+'<path d="M330 112 L330 132 L66 132 L66 118 M62 122 L66 118 L70 122" stroke="var(--rule)" stroke-width="1" fill="none"/>'+
+'<text class="svg-tag" x="198" y="148" text-anchor="middle">AND AGAIN, WHENEVER THEY NEED IT</text>'+
+'</svg>'},
+"case-cex:0":{cap:"The gap between heavy and light users was much wider on advanced capabilities like deep research than on simple ones like file upload.",svg:
+'<svg viewBox="0 0 440 222" role="img" aria-label="Capability use by engagement tier. Deep research reaches nearly half of heavy users but almost none of the light users.">'+
+'<text class="svg-lab" x="120" y="46" text-anchor="end">Deep research</text>'+
+bar(18,240,'s3')+bar(35,165,'s2')+bar(52,30,'s1')+
+'<text class="svg-lab" x="120" y="106" text-anchor="end">Source selection</text>'+
+bar(78,180,'s3')+bar(95,130,'s2')+bar(112,85,'s1')+
+'<text class="svg-lab" x="120" y="166" text-anchor="end">File upload</text>'+
+bar(138,250,'s3')+bar(155,210,'s2')+bar(172,150,'s1')+
+'<line x1="128" y1="14" x2="128" y2="190" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="128" y="204" width="10" height="10" rx="2" fill="var(--s3)"/><text class="svg-tag" x="143" y="213">HEAVY</text>'+
+'<rect x="196" y="204" width="10" height="10" rx="2" fill="var(--s2)"/><text class="svg-tag" x="211" y="213">REGULAR</text>'+
+'<rect x="278" y="204" width="10" height="10" rx="2" fill="var(--s1)"/><text class="svg-tag" x="293" y="213">LIGHT</text>'+
+'</svg>'},
+
+"case-cex:1":{cap:"Type of work and line of report separated people where job function did not. Further up the reporting line, the type of work mattered less.",svg:
+'<svg viewBox="0 0 440 174" role="img" aria-label="A grid with type of work across the top and line of report up the side. In the preparing row the three work types are separate cells; in the reviewing row exploring and verifying merge into one.">'+
+'<text class="svg-tag" x="260" y="12" text-anchor="middle">WORK TYPE</text>'+
+'<text class="svg-tag" x="10" y="110" text-anchor="middle" transform="rotate(-90 10 110)">LINE OF REPORT</text>'+
+'<text class="svg-lab" x="146" y="38" text-anchor="middle">Explore</text><text class="svg-lab" x="260" y="38" text-anchor="middle">Verify</text><text class="svg-lab" x="376" y="38" text-anchor="middle">Communicate</text>'+
+'<path d="M92 46 L199 46" stroke="var(--faint)" stroke-width="1.2" stroke-linecap="round"/><circle cx="92" cy="46" r="1.8" fill="var(--faint)"/><circle cx="199" cy="46" r="1.8" fill="var(--faint)"/>'+'<path d="M207 46 L314 46" stroke="var(--faint)" stroke-width="1.2" stroke-linecap="round"/><circle cx="207" cy="46" r="1.8" fill="var(--faint)"/><circle cx="314" cy="46" r="1.8" fill="var(--faint)"/>'+'<path d="M322 46 L429 46" stroke="var(--faint)" stroke-width="1.2" stroke-linecap="round"/><circle cx="322" cy="46" r="1.8" fill="var(--faint)"/><circle cx="429" cy="46" r="1.8" fill="var(--faint)"/>'+
+'<text class="svg-lab" x="70" y="86" text-anchor="end">Review</text><text class="svg-lab" x="70" y="144" text-anchor="end">Prepare</text>'+
+'<path d="M80 164 L80 56 M76 60 L80 56 L84 60 M76 160 L80 164 L84 160" fill="none" stroke="var(--faint)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>'+
+box(92,56,222,50,'accent-soft','accent')+'<rect x="322" y="56" width="107" height="50" rx="3" fill="rgba(110,110,125,.06)" stroke="var(--rule)" stroke-width="1"/>'+
+'<rect x="92" y="114" width="107" height="50" rx="3" fill="rgba(110,110,125,.12)" stroke="var(--rule)" stroke-width="1"/>'+'<rect x="207" y="114" width="107" height="50" rx="3" fill="rgba(110,110,125,.07)" stroke="var(--rule)" stroke-width="1"/>'+'<rect x="322" y="114" width="107" height="50" rx="3" fill="rgba(110,110,125,.15)" stroke="var(--rule)" stroke-width="1"/>'+
+'</svg>'},
+
+"case-cex:3":{cap:"The product sat at the left of the spectrum. Every pattern expected it further right.",svg:
+'<svg viewBox="0 0 440 180" role="img" aria-label="A spectrum from individual to organisation. The product sits in the leftmost band; expectations sit in the two bands to its right.">'+
+'<text class="svg-tag-a" x="10" y="20">PRODUCT TODAY</text><text class="svg-tag" x="160" y="20">EXPECTED</text>'+
+box(10,30,130,66,'accent-soft','accent')+box(152,30,130,66,'surface','rule')+box(294,30,136,66,'surface','rule')+
+'<text class="svg-ink" x="75" y="58" text-anchor="middle">Personal</text><text class="svg-ink" x="75" y="76" text-anchor="middle">context</text>'+
+'<text class="svg-ink" x="217" y="58" text-anchor="middle">Internal</text><text class="svg-ink" x="217" y="76" text-anchor="middle">infrastructure</text>'+
+'<text class="svg-ink" x="362" y="58" text-anchor="middle">How the</text><text class="svg-ink" x="362" y="76" text-anchor="middle">organisation works</text>'+
+'<line x1="10" y1="124" x2="422" y2="124" stroke="var(--rule)" stroke-width="1"/>'+
+'<path d="M422 124 L414 120 L414 128 Z" fill="var(--rule)"/>'+
+'<text class="svg-tag" x="10" y="146">INDIVIDUAL</text><text class="svg-tag" x="430" y="146" text-anchor="end">ORGANISATION</text>'+
+'</svg>'},
+
+"case-lighthouse:1":{cap:"Whatever they drove, the effort went into getting the back of the car as flat as it would go.",svg:
+'<div style="display:flex;gap:10px">'+
+'<img src="field-1.jpg" alt="Rear seats taken out, leaving the bare floor of the cabin." loading="lazy" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block">'+
+'<img src="field-2.jpg" alt="Quilted mats fitted over the folded rear seats of an SUV, making one surface back to the tailgate." loading="lazy" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block">'+
+'<img src="field-3.jpg" alt="A padded mat laid across the folded rear seats and the boot floor of a smaller car." loading="lazy" style="flex:1;min-width:0;aspect-ratio:4/3;object-fit:cover;border-radius:6px;display:block">'+
+'</div>'+
+''},
+
+"case-lighthouse:2":{cap:"Qualitative first to find the shape, the brand teams to sort it, then back to users to test it.",svg:
+'<svg viewBox="0 0 440 134" role="img" aria-label="Four research stages in a row: 58 diaries, 28 interviews, two workshop days, 200 users surveyed. The first, second and fourth draw on users; the third on the brands&#8217; product owners.">'+
+'<rect x="6" y="30" width="93" height="72" rx="3" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<text class="svg-big" x="52.5" y="66" text-anchor="middle">58</text>'+
+'<text class="svg-lab" x="52.5" y="88" text-anchor="middle">diaries</text>'+
+'<text class="svg-tag-a" x="52.5" y="122" text-anchor="middle">USER</text>'+
+'<path d="M102 66 L114 66 M110 62 L114 66 M110 70 L114 66" stroke="var(--faint)" stroke-width="1.3" fill="none"/>'+
+'<rect x="117" y="30" width="93" height="72" rx="3" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<text class="svg-big" x="163.5" y="66" text-anchor="middle">28</text>'+
+'<text class="svg-lab" x="163.5" y="88" text-anchor="middle">interviews</text>'+
+'<text class="svg-tag-a" x="163.5" y="122" text-anchor="middle">USER</text>'+
+'<path d="M213 66 L225 66 M221 62 L225 66 M221 70 L225 66" stroke="var(--faint)" stroke-width="1.3" fill="none"/>'+
+'<rect x="228" y="30" width="93" height="72" rx="3" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<text class="svg-big" x="274.5" y="66" text-anchor="middle">2</text>'+
+'<text class="svg-lab" x="274.5" y="88" text-anchor="middle">workshop days</text>'+
+'<text class="svg-tag" x="274.5" y="122" text-anchor="middle">PRODUCT OWNERS</text>'+
+'<path d="M324 66 L336 66 M332 62 L336 66 M332 70 L336 66" stroke="var(--faint)" stroke-width="1.3" fill="none"/>'+
+'<rect x="339" y="30" width="93" height="72" rx="3" fill="var(--surface)" stroke="var(--rule)" stroke-width="1"/>'+
+'<text class="svg-big" x="385.5" y="66" text-anchor="middle">200</text>'+
+'<text class="svg-lab" x="385.5" y="88" text-anchor="middle">users surveyed</text>'+
+'<text class="svg-tag-a" x="385.5" y="122" text-anchor="middle">USER</text>'+
+'</svg>'},
+
+"case-lighthouse:3":{cap:"One situation, run through the four slots. The same situation in another brand, or a smaller car, comes out somewhere else.",svg:
+'<svg viewBox="0 0 440 318" role="img" aria-label="Four boxes labelled Context, Technology, Attitude and Behaviour, an arrow down, and a box holding the scenario that results.">'+
+'<rect x="6" y="6" width="208" height="86" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<text class="svg-ink" x="22" y="36">Context</text>'+
+'<text class="svg-lab" x="22" y="60">Outdoors, at night, resting</text>'+
+'<rect x="226" y="6" width="208" height="86" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<text class="svg-ink" x="242" y="36">Technology</text>'+
+'<text class="svg-lab" x="242" y="60">Seat, lighting and climate</text>'+
+'<text class="svg-lab" x="242" y="76">controls</text>'+
+'<rect x="6" y="104" width="208" height="86" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<text class="svg-ink" x="22" y="134">Attitude</text>'+
+'<text class="svg-lab" x="22" y="158">Freedom, ease, closeness to</text>'+
+'<text class="svg-lab" x="22" y="174">nature</text>'+
+'<rect x="226" y="104" width="208" height="86" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<text class="svg-ink" x="242" y="134">Behaviour</text>'+
+'<text class="svg-lab" x="242" y="158">Turn the cabin into a place</text>'+
+'<text class="svg-lab" x="242" y="174">to rest</text>'+
+'<line x1="220" y1="200" x2="220" y2="210" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<path d="M216 210 L224 210 L220 217 Z" fill="var(--rule)"/>'+
+'<rect x="6" y="224" width="428" height="86" rx="5" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.4"/>'+
+'<text class="svg-ink" x="22" y="254">Scenario</text>'+
+'<text class="svg-lab" x="22" y="278">Put the car&#8217;s own functions together into a private place to</text>'+
+'<text class="svg-lab" x="22" y="294">lie back and look at the sky.</text>'+
+'</svg>'}
+};
+
+function renderCase(c){
+  document.getElementById('c-pillar').textContent=c.pillar+' · '+c.dom.replace(/&amp;/g,'&')+' · '+c.meta;
+  document.getElementById('c-title').textContent=c.title;
+  document.getElementById('c-lede').textContent=c.lede;
+  var sc=document.getElementById('c-scope');
+  sc.innerHTML=(c.scope||[]).map(function(s){return '<div><b>'+s[0]+'</b><span>'+s[1]+'</span></div>'}).join('');
+  sc.hidden=!(c.scope&&c.scope.length);
+  document.getElementById('c-beats').innerHTML=c.beats.map(function(b,i){
+    var cls='beat'+(i===(c.j===undefined?3:c.j)?' judgment':'');
+    var f=FIGS[c.id+':'+i];
+    var fig=f?'<figure class="figure">'+f.svg+'<figcaption>'+f.cap+'</figcaption></figure>':'';
+    var inlined=false;
+    var body=b[1].split('|').map(function(p){
+      if(p==='@fig'){inlined=true;return f?'<figure class="figure" style="margin-top:22px">'+f.svg+'<figcaption>'+f.cap+'</figcaption></figure>':''}
+      return '<p>'+p+'</p>'}).join('');
+    if(inlined)fig='';
+    return '<div class="'+cls+'"><div class="beat-n">'+String(i+1).padStart(2,'0')+'</div>'+
+      '<div class="stack g14"><h3>'+b[0]+'</h3><div class="prose stack">'+body+'</div>'+fig+'</div></div>';
+  }).join('');
+}
+
+var VIEWS=['home','about','people','business','system','technology','projects','questions','writing'];
+function go(id){
+  var c=CASES.filter(function(x){return x.id===id})[0];
+  VIEWS.forEach(function(v){document.getElementById('v-'+v).hidden=true});
+  document.getElementById('v-case').hidden=true;
+  if(c){renderCase(c);document.getElementById('v-case').hidden=false}
+  else{if(VIEWS.indexOf(id)<0)id='home';document.getElementById('v-'+id).hidden=false}
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.classList.toggle('on',a.dataset.go===(c?c.pillar.toLowerCase():id));
+  });
+  if(location.hash.slice(1)!==id)history.replaceState(null,'','#'+id);
+  document.getElementById('main').scrollIntoView({block:'start'});
+  window.scrollTo(0,0);
+}
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-go]');
+  if(!t)return;
+  e.preventDefault();
+  go(t.dataset.go);
+});
+
+function toast(t){var e=document.getElementById('toast');if(!e)return;e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(function(){e.classList.remove('on')},1800)}
+document.addEventListener('click',function(e){
+  var a=e.target.closest?e.target.closest('a[href^="mailto:"]'):null;
+  if(!a)return;
+  if(window.self===window.top)return;
+  e.preventDefault();
+  var addr=a.getAttribute('href').replace('mailto:','');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(addr).then(function(){toast('Email address copied')},function(){toast(addr)});
+  } else toast(addr);
+});
+window.addEventListener('hashchange',function(){go(location.hash.slice(1)||'home')});
+fill();
+go(location.hash.slice(1)||'home');
+</script>
+</body>
+</html>
